@@ -1,0 +1,156 @@
+\begin{filecontents}{FashionIQ_dress.dat}
+X Iteration     R@10        R@50                
+1 0	            28.90       53.49                 
+2 20            31.73       56.61               	
+3 40		    30.04       55.57     
+4 60            30.34       53.84     	    
+5 80            32.86       55.71     	    
+6 100           36.75       62.19     	    
+\end{filecontents}
+\begin{filecontents}{FashionIQ_toptee.dat}
+X Iteration     R@10        R@50                
+1 0	            36.40       60.93                 
+2 20            37.63       62.97               	
+3 40		    36.81       62.82     
+4 60            34.57       60.47     	    
+5 80            36.42       62.96     	    
+6 100           44.88       68.59     	    
+\end{filecontents}
+\begin{filecontents}{FashionIQ_shirt.dat}
+X Iteration     R@10        R@50                
+1 0	            32.82       54.56                 
+2 20            34.00       56.23               	
+3 40		    32.97       54.26     
+4 60            31.55       53.14     	    
+5 80            33.79       55.63     	    
+6 100           38.49       59.87     	    
+\end{filecontents}
+\begin{filecontents}{FashionIQ_avg.dat}
+X Iteration     R@10    R@50    Avg                     
+1 0	            32.71   56.33   44.52                       
+2 20            34.45   58.60   46.53                   	
+3 40		    33.27   57.55   45.41        
+4 60            32.15   55.82   43.98        	    
+5 80            34.36   57.10   45.231        	    
+6 100           37.53   59.90   48.21        	    
+\end{filecontents}
+% \begin{filecontents}{Fashion200K.dat}
+% X Iteration     Training    Testing       
+% 1 0	            10.12      8.25           
+% 2 20            30.83      20.48           
+% 3 40		    45.5       42.78     
+% 4 60            49.75      46.58     
+% 5 80            51.2525    50.25     
+% 6 100           58.47      56.47     
+% \end{filecontents}
+\begin{filecontents}{FashionIQ_loss.dat}
+X Iteration    Loss           
+1 0	          0.738       
+2 20          0.187      
+3 40		  0.095       
+4 60          0.072      
+5 80          0.054       
+6 100         0.045       
+\end{filecontents}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[scale=0.50]
+\begin{axis}[
+    %axis lines=middle,
+    ymin=20, ymax=65,
+    xmin=0,
+    legend pos=south east,
+    %xlabel style={at={(current axis.right of origin)},below=5mm},
+    title={\textit{\textbf{Dress}}},
+    xlabel=Epochs,
+    ylabel=R@K,
+    xticklabel style = {rotate=90,anchor=east},
+    %enlargelimits = false,
+    xticklabels from table={FashionIQ_dress.dat}{Iteration},xtick=data]
+\addplot[red,mark=*] table [y=R@10, x=X]{FashionIQ_dress.dat};
+\addlegendentry{R@10}
+\addplot[green,mark=square] table [y=R@50, x=X]{FashionIQ_dress.dat};
+\addlegendentry{R@50}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.50]
+\begin{axis}[
+    %axis lines=middle,
+    ymin=20, ymax=70,
+    xmin=0,
+    legend pos=south east,
+    %xlabel style={at={(current axis.right of origin)},below=5mm},
+    title={\textit{\textbf{Toptee}}},
+    xlabel=Epochs,
+    ylabel=R@K,
+    xticklabel style = {rotate=90,anchor=east},
+    %enlargelimits = false,
+    xticklabels from table={FashionIQ_toptee.dat}{Iteration},xtick=data]
+\addplot[red,mark=*] table [y=R@10, x=X]{FashionIQ_toptee.dat};
+\addlegendentry{R@10}
+\addplot[green,mark=square] table [y=R@50, x=X]{FashionIQ_toptee.dat};
+\addlegendentry{R@50}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.50]
+\begin{axis}[
+    %axis lines=middle,
+    ymin=20, ymax=65,
+    xmin=0,
+    legend pos=south east,
+    %xlabel style={at={(current axis.right of origin)},below=5mm},
+    title={\textit{\textbf{Shirt}}},
+    xlabel=Epochs,
+    ylabel=R@K,
+    xticklabel style = {rotate=90,anchor=east},
+    %enlargelimits = false,
+    xticklabels from table={FashionIQ_shirt.dat}{Iteration},xtick=data]
+\addplot[red,mark=*] table [y=R@10, x=X]{FashionIQ_shirt.dat};
+\addlegendentry{R@10}
+\addplot[green,mark=square] table [y=R@50, x=X]{FashionIQ_shirt.dat};
+\addlegendentry{R@50}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.50]
+\begin{axis}[
+    %axis lines=middle,
+    ymin=20, ymax=65,
+    xmin=0,
+    legend pos=south east,
+    %xlabel style={at={(current axis.right of origin)},below=5mm},
+    title={\textit{\textbf{Average Recall}}},
+    xlabel=Epochs,
+    ylabel=R@K,
+    xticklabel style = {rotate=90,anchor=east},
+    %enlargelimits = false,
+    xticklabels from table={FashionIQ_avg.dat}{Iteration},xtick=data]
+\addplot[red,mark=*] table [y=R@10, x=X]{FashionIQ_avg.dat};
+\addlegendentry{R@10}
+\addplot[green,mark=square] table [y=R@50, x=X]{FashionIQ_avg.dat};
+\addlegendentry{R@50}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.50]
+\begin{axis}[
+    %axis lines=middle,
+    ymin=0, ymax=0.8,
+    xmin=0,
+    legend pos=north east,
+    %xlabel style={at={(current axis.right of origin)},below=5mm},
+    title={\textit{\textbf{Loss}}},
+    xlabel=Epochs,
+    ylabel=Loss,
+    xticklabel style = {rotate=90,anchor=east},
+    %enlargelimits = false,
+    xticklabels from table={FashionIQ_loss.dat}{Iteration},xtick=data]
+\addplot[red,mark=*] table [y=Loss, x=X]{FashionIQ_loss.dat};
+% \addlegendentry{Loss}
+% \addplot[green,mark=square] table [y=Testing, x=X]{FashionIQ_loss.dat};
+% \addlegendentry{Testing}
+\end{axis}
+\end{tikzpicture}
+\caption{Proof Convergence of Proposed Model's Recall and Loss - FashionIQ Dataset}
+\label{fig:Fashion_IQ_Convergence}
+\end{figure}
+
